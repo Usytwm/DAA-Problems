@@ -6,18 +6,18 @@ Este repositorio contiene una colección de problemas y sus soluciones para la a
 
 - **Problem1 (Videojuego)/**
 
-  - [README.md](./Problem%201/README.md): Descripcion y solucion del problema
+  - [README.md](./Problem%201/README.md)
   - [Solution.pdf](./Problem%201/Videojuego.pdf)
   - [Código fuente](./Problem%201/code/solution1.py)
 
 - **Problem2 (Grid)/**
 
-  - [README.md](./Problem%202/README.md): Descripcion y solucion del problema
+  - [README.md](./Problem%202/README.md)
   - [Solution.pdf](./Problem%202/)
   - [Código fuente](./Problem%202/code/solution1.py)
 
 - **Problem3 (El secreto de la Isla)/**
-  - [README.md](./Problem%203/README.md): Descripcion y solucion del problema
+  - [README.md](./Problem%203/README.md)
   - [Solution.pdf](./Problem%203/)
   - [Código fuente](./Problem%203/code/solution1.py)
 
