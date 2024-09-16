@@ -224,6 +224,7 @@ El valor esperado de las ganancias se minimiza al seguir estos pasos:
 3. **Utilizar sumas acumuladas (prefix sums)** para calcular las ganancias de manera eficiente.
 
 Este enfoque permite calcular las ganancias con una complejidad total de $ O(n \log n) $, asegurando que el jugador tenga las menores ganancias posibles. -->
+
 ## Asignación óptima de cofres regulares
 
 Después de balancear los intervalos, el siguiente paso es asignar los cofres regulares de manera **óptima**. El objetivo es minimizar las ganancias esperadas del jugador.

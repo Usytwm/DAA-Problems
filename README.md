@@ -7,7 +7,7 @@ Este repositorio contiene una colección de problemas y sus soluciones para la a
 - **Problem1 (Videojuego)/**
 
   - [README.md](./Problem%201/README.md): Descripcion y solucion del problema
-  - [Solution.pdf](./Problem%201/)
+  - [Solution.pdf](./Problem%201/Videojuego.pdf)
   - [Código fuente](./Problem%201/code/solution1.py)
 
 - **Problem2 (Grid)/**
