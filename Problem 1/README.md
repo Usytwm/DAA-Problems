@@ -67,22 +67,6 @@ $$
 \underbrace{\text{500, 400}}_{\text{cnt}_4 = 2}
 $$
 
-<!-- - Habitación 1: Cofre (valor 100)
-- Habitación 2: Cofre (valor 200)
-- Habitación 3: Trampa
-- Habitación 4: Trampa
-- Habitación 5: Cofre (valor 50)
-- Habitación 6: Cofre (valor 300)
-- Habitación 7: Trampa
-- Habitación 8: Cofre (valor 500)
-- Habitación 9: Cofre (valor 400)
-- Habitación 10: Trampa -->
-
-<!-- - Primer intervalo: Habitaciones 1 y 2 { $ \text{cnt}_1 = 2 $ }
-- Segundo intervalo: Sin Habitaciones (dos trampas seguidas, sin cofres) { $ \text{cnt}_2 = 0 $ }
-- Tercer intervalo: Habitaciones 5 y 6 { $ \text{cnt}_3 = 2 $ }
-- Cuarto intervalo: Habitaciones 8 y 9 { $ \text{cnt}_4 = 2 $ } -->
-
 ### Restricción de los intervalos:
 
 Tenemos que:
