@@ -10,6 +10,8 @@ def main():
     for i in range(n):
         pr.append(pr[-1] + c[i])
 
+    result = []
+
     # Cálculo de las respuestas para cada k
     for k in range(1, n + 1):
         ans = 0
@@ -18,9 +20,9 @@ def main():
             ans += j * (pr[min(n, i + k)] - pr[i])
             j += 1
         # Dividir por n
-        print(ans / n, end=" ")
+        result.append(ans / n)
 
-    print()
+    print(result)
 
 
 if __name__ == "__main__":
