@@ -271,9 +271,11 @@ La **complejidad total** del algoritmo se reduce de $O(n^2)$ a $O(n \log n)$ de 
 
    La complejidad total es la suma de los tiempos de cálculo para todos los valores de $k$ desde 1 hasta $n$. Esto implica sumar:
 
-   $$
+   ![Fórmula](https://latex.codecogs.com/svg.latex?\sum_{k=1}^{n}\frac{n}{k})
+
+   <!-- $$
    \sum_{k=1}^{n} \frac{n}{k}
-   $$
+   $$ -->
 
    Esta es una sumatoria armónica, cuyo comportamiento asintótico es:
 
