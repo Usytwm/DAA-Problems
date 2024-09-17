@@ -242,7 +242,7 @@ Las sumas prefijas nos permiten calcular la suma de cualquier intervalo de eleme
 Con esta estructura, la suma de los cofres en cualquier intervalo $[i, j]$ se puede obtener con la fórmula:
 
 $$
-\text{suma\_intervalo}(i, j) = \text{prefix}[j] - \text{prefix}[i - 1]
+\text{sumintervalo}(i, j) = \text{prefix}[j] - \text{prefix}[i - 1]
 $$
 
 Esto nos permite calcular la suma de cualquier intervalo de cofres de manera eficiente, sin tener que recorrerlos uno por uno en cada iteración.
