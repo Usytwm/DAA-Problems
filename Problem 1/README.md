@@ -74,6 +74,7 @@ Tenemos que:
 $$
 \sum_{i=1}^{\text{k}=4} \text{cnt}_i = n - k = 10 - 4 = 6
 $$
+
 Y, efectivamente:
 
 $$
