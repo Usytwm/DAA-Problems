@@ -9,7 +9,7 @@ Este repositorio contiene una colección de problemas y sus soluciones para la a
   - [README.md](./Problem%201/README.md)
   - [Solution.pdf](./Problem%201/Videojuego.pdf)
   - [Código fuente](./Problem%201/code/solution2.py): $O(n^2)$ 
-  - [Código fuente](./Problem%201/code/solution1.py): $ O(n \log n) $
+  - [Código fuente](./Problem%201/code/solution1.py): $O(n \log n)$
 
 
 - **Problem2 (Grid)/**
