@@ -1,28 +1,34 @@
+"""
+Complejidad Temporal: O(n log n)
+"""
+
+
 def main():
     n = int(input())
     c = list(map(int, input().split()))
 
     # Ordenar los cofres en orden descendente
-    c.sort(reverse=True)
+    c.sort(reverse=True)  # * O(n log n)
 
     # Sumas acumuladas (prefix sums)
     pr = [0]
-    for i in range(n):
+    for i in range(n):  # * O(n)
         pr.append(pr[-1] + c[i])
 
     result = []
 
     # Cálculo de las respuestas para cada k
-    for k in range(1, n + 1):
-        ans = 0
+    for k in range(1, n + 1):  # * O(n) iteraciones
+        total_gain = 0
         j = 0
-        for i in range(0, n, k):
-            ans += j * (pr[min(n, i + k)] - pr[i])
+        for i in range(0, n, k):  # * O(n/k) = O(log n) iteraciones
+            total_gain += j * (pr[min(n, i + k)] - pr[i])
             j += 1
-        # Dividir por n
-        result.append(ans / n)
-
-    print(result)
+        expected_gain = total_gain / n
+        result.append(expected_gain)
+        print(f"Ganancia esperada para k = {k}: {total_gain}/{n} = {expected_gain}")
+    # * O(n log n) + O(n) * O(log n) = O(n log n) en total
+    return result
 
 
 if __name__ == "__main__":
