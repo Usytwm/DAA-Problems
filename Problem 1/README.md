@@ -41,7 +41,7 @@ Para simplificar el análisis, **rotamos las habitaciones** de tal forma que la 
 
 Supongamos que tenemos $k$ trampas. Entonces, las habitaciones se distribuyen en $k$ grupos, donde cada grupo contiene $\text{cnt}_i$ cofres regulares seguidos de una trampa. Los $\text{cnt}_i$ satisfacen la siguiente restricción:
 
-![Fórmula](https://latex.codecogs.com/svg.latex?\begin{array}{c}%20\text{cnt}_i%20\geq%200%20\quad%20\text{y}%20\quad%20\sum_{i=1}^{k}%20\text{cnt}_i%20=%20n%20-%20k%20\end{array})
+![Fórmula](https://latex.codecogs.com/svg.latex?\color{White}\begin{array}{c}%20\text{cnt}_i%20\geq%200%20\quad%20\text{y}%20\quad%20\sum_{i=1}^{k}%20\text{cnt}_i%20=%20n%20-%20k%20\end{array})
 
 <!-- $$
 \begin{array}{c}
@@ -62,7 +62,7 @@ Supongamos que tenemos $n = 10$ habitaciones y $k = 3$ trampas. El jugador comie
 
 ### Distribución de intervalos:
 
-![Fórmula](https://latex.codecogs.com/svg.latex?\underbrace{\text{100,%20200}}_{\text{cnt}_1%20=%202}%20\quad%20\underbrace{\text{Trampa,%20Trampa}}_{\text{cnt}_2%20=%200}%20\quad%20\underbrace{\text{50,%20300}}_{\text{cnt}_3%20=%202}%20\quad%20\underbrace{\text{500,%20400}}_{\text{cnt}_4%20=%202})
+![Fórmula](https://latex.codecogs.com/svg.latex?\color{White}\underbrace{\text{100,%20200}}_{\text{cnt}_1%20=%202}%20\quad%20\underbrace{\text{Trampa,%20Trampa}}_{\text{cnt}_2%20=%200}%20\quad%20\underbrace{\text{50,%20300}}_{\text{cnt}_3%20=%202}%20\quad%20\underbrace{\text{500,%20400}}_{\text{cnt}_4%20=%202})
 
 
 <!-- $$
@@ -146,7 +146,7 @@ El concepto clave es que los **coeficientes** afectan la suma total de ganancias
 
       La **reducción en las ganancias** es la diferencia entre la contribución original y la nueva contribución:
 
-      ![Fórmula](https://latex.codecogs.com/svg.latex?\Delta%20\text{Ganancia}%20=%20v_j%20\times%20(y%20-%20(x%20+%201)))
+      ![Fórmula](https://latex.codecogs.com/svg.latex?\color{White}\Delta%20\text{Ganancia}%20=%20v_j%20\times%20(y%20-%20(x%20+%201)))
 
 
       <!-- $$
@@ -279,16 +279,16 @@ La **complejidad total** del algoritmo se reduce de $O(n^2)$ a $O(n \log n)$ de 
 
    La complejidad total es la suma de los tiempos de cálculo para todos los valores de $k$ desde 1 hasta $n$. Esto implica sumar:
 
-   ![Fórmula](https://latex.codecogs.com/svg.latex?\sum_{k=1}^{n}\frac{n}{k})
+   ![Fórmula](https://latex.codecogs.com/svg.latex?\color{White}\sum_{k=1}^{n}\frac{n}{k})
 
    Esta es una sumatoria armónica, cuyo comportamiento asintótico es:
 
-   ![Fórmula](https://latex.codecogs.com/svg.latex?O\left(\sum_{k=1}^{n}\frac{n}{k}\right)%20=%20O(n\log%20n))
+   ![Fórmula](https://latex.codecogs.com/svg.latex?\color{White}O\left(\sum_{k=1}^{n}\frac{n}{k}\right)%20=%20O(n\log%20n))
 
 
    Por lo tanto, la complejidad total del algoritmo, después de optimizar con sumas prefijas, se reduce a:
 
-   ![Fórmula](https://latex.codecogs.com/svg.latex?O(n%20\log%20n))
+   ![Fórmula](https://latex.codecogs.com/svg.latex?\color{White}O(n%20\log%20n))
 
    
    
@@ -310,7 +310,7 @@ Donde:
 
 El **valor esperado** de las ganancias del jugador se puede calcular sumando las contribuciones de cada cofre, ponderadas por su coeficiente y su valor:
 
-![Fórmula](https://latex.codecogs.com/svg.latex?E_k%20=%20\frac{1}{n}%20\sum_{i=1}^{k}%20\sum_{j=1}^{\text{cnt}_i}%20j%20\cdot%20v_j)
+![Fórmula](https://latex.codecogs.com/svg.latex?\color{White}E_k%20=%20\frac{1}{n}%20\sum_{i=1}^{k}%20\sum_{j=1}^{\text{cnt}_i}%20j%20\cdot%20v_j)
 
 <!-- $$
 E_k = \frac{1}{n} \sum_{i=1}^{k} \sum_{j=1}^{\text{cnt}_i} j \cdot v_j
