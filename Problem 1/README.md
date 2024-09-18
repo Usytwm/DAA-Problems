@@ -206,8 +206,8 @@ El cálculo de las ganancias del jugador, basado en la división en intervalos y
 
 3. **Asignación de coeficientes:**
    - Para los **primeros $k$ cofres** (es decir, $i < k$), su coeficiente es 0, porque están en las posiciones que ocupan las trampas. Esto significa que el jugador no puede recoger estos cofres, ya que cae en una trampa antes de llegar a ellos. Esta parte del algoritmo evidencia que los cofres de mayor valor se colocan en posiciones de trampas.
-   - Los **siguientes $k$ cofres** reciben un coeficiente de 1, lo que indica que estos cofres pueden ser recogidos una vez antes de que el jugador caiga en una trampa. Este patrón sigue para el resto de los cofres: cada conjunto de $k$ cofres recibe un coeficiente incrementado en 1, lo que refleja cuántos intervalos han pasado antes de llegar a los cofres.
-   - En términos simples, los cofres más valiosos (los primeros en la lista ordenada) reciben coeficientes más bajos o incluso 0 (si caen en trampas), mientras que los cofres con coeficientes más altos están más alejados de las trampas.
+   - Los **siguientes $k$ cofres** reciben un coeficiente de 1, lo que indica que estos cofres pueden ser recogidos una vez antes de que el jugador caiga en una trampa. Este patrón sigue para el resto de los cofres: cada conjunto de $k$ cofres recibe un coeficiente incrementado en 1, lo que refleja cuantas veces pueden ser recogidos antes de que el jugador caiga en la siguiente trampa
+   - En términos simples, los cofres más valiosos (los primeros en la lista ordenada) reciben coeficientes más bajos simulanodo asi que en la ubicacion en los intervalos estan mas alejados de la siguiente trampa, y a medida que los coeficientes aumentan, quiere decir que en algun intervalo el cofre que le corresponde esta mas pegado a la siguiente trampa pr lo cual se recoje mas veces en ese intervalo pero como son cofres menos valiosos contribuye menos que otro cofre de mayor valor
 
 4. **Cálculo de las ganancias**:
    - Para cada valor de $k$, multiplicamos el valor de cada cofre por su coeficiente $\left\lfloor \frac{i}{k} \right\rfloor$, sumando los resultados.
@@ -259,7 +259,7 @@ Esto nos permite calcular la suma de cualquier intervalo de cofres de manera efi
 
 El verdadero propósito de las **sumas prefijas** es facilitar el cálculo de las sumas de los cofres en cada intervalo, agrupando aquellos que comparten el mismo coeficiente. Esto se hace con el fin de multiplicar la suma total de esos cofres por su coeficiente correspondiente.
 
-Con esto, podemos calcular las sumas mucho más rápido. La idea es que podemos obtener la suma de los primeros $k$ cofres que estan ordenados, los siguientes $k$, y así sucesivamente en **$O(1)$**, evitando la necesidad de recalcular las sumas de nuevo en cada iteración. Esto es particularmente útil para los cofres que tienen coeficiente 0 (aquellos que caen en las trampas), porque podemos multiplicar su suma por 0 directamente, como si estuviéramos sacando un factor común, y hacer lo mismo para los cofres con coeficientes 1, 2, etc.
+Con esto, podemos calcular las sumas mucho más rápido. La idea es que podemos obtener la suma de los primeros $k$ cofres que estan ordenados, los siguientes $k$, y así sucesivamente en **$O(1)$**, evitando la necesidad de recalcular las sumas de nuevo en cada iteración. Esto es bastante útil ya que por ejemplo para los cofres que tienen coeficiente 0 (aquellos que caen en las trampas), podemos multiplicar su suma por 0 directamente, como si estuviéramos sacando un factor común, y hacer lo mismo para los cofres con coeficientes 1, 2, etc.
 
 ### Reducción de la complejidad total
 
@@ -272,7 +272,7 @@ La **complejidad total** del algoritmo se reduce de $O(n^2)$ a $O(n \log n)$ de 
    - Construir el arreglo de sumas prefijas toma $O(n)$, ya que solo necesitamos una pasada sobre los cofres para calcular estas sumas acumuladas.
 
 3. **Cálculo de las ganancias para cada $k$**:
-   - Si $n$ no es divisible por $k$, el último bloque tendrá una longitud menor que $ $, pero esto no cambia el análisis general. Para cada $k$, el número de intervalos es precisamente $k$, podemos obtener cada suma de intervalo en $O(1)$ utilizando las sumas prefijas y multiplicarlas por su coeficiente, debido a que esto se hace de $k$ cofres en $k$ cofres en la lsita de los cofres ordenados, llegamos a la conclusion de que en el peor caso, para cada $k$, el cálculo de las ganancias toma $O\left( \frac{n}{k} \right)$ operaciones.
+   - Si $n$ no es divisible por $k$, el último bloque tendrá una longitud menor que $k$, pero esto no cambia el análisis general. Para cada $k$, el número de intervalos es precisamente $k$, podemos obtener cada suma de intervalo en $O(1)$ utilizando las sumas prefijas y multiplicarlas por su coeficiente, debido a que esto se hace de $k$ cofres en $k$ cofres en la lsita de los cofres ordenados, llegamos a la conclusion de que en el peor caso, para cada $k$, el cálculo de las ganancias toma $\frac{n}{k}$ operaciones.
 
 
 4. **Sumatoria para todos los valores de $k$**
@@ -294,6 +294,7 @@ La **complejidad total** del algoritmo se reduce de $O(n^2)$ a $O(n \log n)$ de 
    
 
 ---
+
 ## Probabilidades y valor esperado
 
 El valor esperado de las ganancias está relacionado directamente con las **probabilidades** de recoger cofres desde una posición inicial aleatoria. Dado que el jugador comienza en una habitación aleatoria, cada habitación tiene la misma probabilidad de ser elegida.
