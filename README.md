@@ -4,21 +4,20 @@ Este repositorio contiene una colección de problemas y sus soluciones para la a
 
 ## Estructura del Repositorio
 
-- **Problem1 (Videojuego)/**
+- **Problema 1 (Videojuego)/**
 
-  - [README.md](./Problem%201/README.md)
-  - [Solution.pdf](./Problem%201/Videojuego.pdf)
-  - [Código fuente](./Problem%201/code/solution2.py): $O(n^2)$ 
-  - [Código fuente](./Problem%201/code/solution1.py): $O(n \log n)$
+  - [Instrucciones y Descripción del Problema](./Problem%201/README.md)
+  - [Informe de la Solución (PDF)](./Problem%201/Videojuego.pdf)
+  - [Código fuente (Complejidad $O(n^2)$)](./Problem%201/code/solution2.py)
+  - [Código fuente (Complejidad $O(n \log n)$)](./Problem%201/code/solution1.py)
 
-
-- **Problem2 (Grid)/**
+- **Problema 2 (Grid)/**
 
   - [README.md](./Problem%202/README.md)
   - [Solution.pdf](./Problem%202/)
   - [Código fuente](./Problem%202/code/solution1.py)
 
-- **Problem3 (El secreto de la Isla)/**
+- **Problema 3 (El secreto de la Isla)/**
   - [README.md](./Problem%203/README.md)
   - [Solution.pdf](./Problem%203/)
   - [Código fuente](./Problem%203/code/solution1.py)
