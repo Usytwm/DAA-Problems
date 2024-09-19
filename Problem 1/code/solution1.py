@@ -21,7 +21,7 @@ def main():
     for k in range(1, n + 1):  # * O(n) iteraciones
         total_gain = 0
         j = 0
-        for i in range(0, n, k):  # * O(n/k) = O(log n) iteraciones
+        for i in range(0, n, k):  # * n/k iteraciones => O(n/k) = O(log n)
             total_gain += j * (pr[min(n, i + k)] - pr[i])
             j += 1
         expected_gain = total_gain / n
