@@ -8,8 +8,8 @@ Este repositorio contiene una colección de problemas y sus soluciones para la a
 
   - [Instrucciones y Descripción del Problema](./Problem%201/README.md)
   - [Informe de la Solución (PDF)](./Problem%201/Videojuego.pdf)
-  - [Código fuente (Complejidad $O(n^2)$)](./Problem%201/code/solution2.py)
-  - [Código fuente (Complejidad $O(n \log n)$)](./Problem%201/code/solution1.py)
+  - [Código fuente](./Problem%201/code/solution2.py) (Complejidad: $O(n^2)$)
+  - [Código fuente](./Problem%201/code/solution1.py) (Complejidad: $O(n \log n)$)
 
 - **Problema 2 (Grid)/**
 
