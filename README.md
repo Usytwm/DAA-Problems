@@ -8,19 +8,21 @@ Este repositorio contiene una colección de problemas y sus soluciones para la a
 
   - [Instrucciones y Descripción del Problema](./Problem%201/README.md)
   - [Informe de la Solución (PDF)](./Problem%201/Videojuego.pdf)
-  - [Código fuente](./Problem%201/code/solution2.py) (Complejidad: $O(n^2)$)
-  - [Código fuente](./Problem%201/code/solution1.py) (Complejidad: $O(n \log n)$)
+  - [Solución](./Problem%201/code/solution2.py) (Complejidad: $O(n^2)$)
+  - [Solución Optimizada](./Problem%201/code/solution1.py) (Complejidad: $O(n \log n)$)
 
 - **Problema 2 (Grid)/**
 
-  - [README.md](./Problem%202/README.md)
-  - [Solution.pdf](./Problem%202/)
+  - [Instrucciones y Descripción del Problema](./Problem%202/README.md)
+  - [Informe de la Solución (PDF)](./Problem%202/)
   - [Código fuente](./Problem%202/code/solution1.py)
 
 - **Problema 3 (El secreto de la Isla)/**
-  - [README.md](./Problem%203/README.md)
-  - [Solution.pdf](./Problem%203/)
-  - [Código fuente](./Problem%203/code/solution1.py)
+  - [Instrucciones y Descripción del Problema](./Problem%203/README.md)
+  - [Informe de la Solución (PDF)](./Problem%203/)
+  - [Solución](./Problem%203/code/exact_solution.py)
+  - [Solución Optimizada](./Problem%203/code/optimized_exact_solution.py)
+  - [Solución Aproximada](./Problem%203/code/approximate_solution.py)
 
 ## Descripción de los Problemas
 
