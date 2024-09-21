@@ -31,14 +31,7 @@ def greedy_dominating_set(graph):
     """
     dominated = set()  # Conjunto de vértices ya dominados
     dominating_set = set()  # Conjunto que contiene la solución aproximada
-    # heap = []
 
-    # Inicializar un heap donde guardamos el grado de dominación de cada vértice
-    # for vertex, neighbors in graph.items():
-    #     heapq.heappush(
-    #         heap, (-len(neighbors), vertex)
-    #     )  # Guardamos el negativo del grado para tener un max-heap
-    # Crear una lista con los elementos a incluir en el heap
     heap = [(-len(neighbors), vertex) for vertex, neighbors in graph.items()]
     # Convertir la lista en un heap en O(n)
     heapq.heapify(heap)
