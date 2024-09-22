@@ -68,7 +68,7 @@ Luego el problema es NP-Completo
 
 ### Pasos 1 y 2
 
-Sea el problema de si un grafo $G = (V,E)$ tiene un conjunto dominante S, |S| = k. Podemos verificar una solución potencial en tiempo polinómico.
+Sea el problema de si un grafo $G = (V,E)$ tiene un conjunto dominante $S: |S| = k$. Podemos verificar una solución potencial en tiempo polinómico.
 
 Verificar si el conjunto de vértices $S$ forma un conjunto dominante:
 Para cada vértice $v \in V \setminus  S$:
@@ -83,46 +83,43 @@ Esta verificación puede realizarse en tiempo $O(V+E)$ por lo que el problema es
 Una **cobertura de vértices** $V'$ de un grafo $G = (V, E)$ es un subconjunto de $V$ tal que, si $(u, v) \in E$, entonces $u \in V'$ o $v \in V'$. Es decir, es un subconjunto de vértices $V'$ donde cada arista de $E$ tiene al menos uno de sus extremos en él.
 
 ### Pasos 4 y 5
-
 Dada una instancia del problema de Vertex Cover:
 
 - Teniendo un grafo $G = (V, E)$ y un número entero k, buscar si hay un conjunto de vértices $V_c$ de tamaño k que cubra todas las aristas.
 
 Se construye una nueva instancia del problema de conjunto dominante:
 
-- Sea G’ subgrafo de G tal que para cada arista (u,v) en E, se agrega un nuevo vértice $w_{uv}$ a V’ conectado a ambos vértices u y v.
+- Sea $G’$ subgrafo de $G$ tal que para cada arista $(u,v)$ en $E$, se agrega un nuevo vértice $w_{uv}$ a $V’$ conectado a ambos vértices u y v.
 
-Luego se tiene que si G tiene una cobertura de vértices $V_c$ de tamaño k:
-El conjunto $V_c$ forma un conjunto dominante en G’
-Cada vértice $w_{uv}$ es dominado por al menos uno de sus dos vértices incidentes en Vc
-Por lo tanto, G’ tiene un conjunto dominante de tamaño k.
+Luego se tiene que si $G$ tiene una cobertura de vértices $V_c$ de tamaño $k$:
+El conjunto $V_c$ forma un conjunto dominante en $G’$
+Cada vértice $w_{uv}$ es dominado por al menos uno de sus dos vértices incidentes en $V_c$
+Por lo tanto, $G’$ tiene un conjunto dominante de tamaño $k$.
 
-Si G’ tiene un conjunto dominante D de tamaño k:
-Los vértices originales de G forman una cobertura de vértices en G.
-Cada arista (u,v) debe tener al menos un vértice D conectado a u o v
-Por lo tanto, D forma una cobertura de vértices en G de tamaño máximo k
+Si $G’$ tiene un conjunto dominante $D$ de tamaño $k$:
+Los vértices originales de $G$ forman una cobertura de vértices en $G$.
+Cada arista (u,v) debe tener al menos un vértice $D$ conectado a $u$ o $v$
+Por lo tanto, $D$ forma una cobertura de vértices en $G$ de tamaño máximo $k$
 
 Por tanto, podemos reducir un problema de cobertura de vértices a uno de conjunto dominante.
 
-Como Vertex Cover es un problema NP-Completo, todo problema NP se puede reducir a un problema Vertex Cover, luego todo problema NP se puede reducir a un problema Dominating Set.
+Como Vertex Cover es un problema $NP-Completo$, todo problema $NP$ se puede reducir a un problema Vertex Cover, luego todo problema NP se puede reducir a un problema Dominating Set.
 
-# Otra solucion
-
-# Reducción del problema de **Dominating Set** al problema de **Vertex Cover**
+### Otra solucion
+### Reducción del problema de **Dominating Set** al problema de **Vertex Cover**
 
 **Introducción:**
 
 El objetivo es demostrar una reducción polinomial del problema de _Dominating Set_ al problema de _Vertex Cover_. Esto significa que, dada una instancia de _Dominating Set_, podemos transformarla en una instancia de _Vertex Cover_ de tal manera que la solución al segundo problema nos proporcione una solución al primero.
 
----
 
-**Definiciones:**
+<!-- **Definiciones:**
 
 - **Dominating Set (Conjunto Dominante):**
   Dado un grafo no dirigido $G = (V, E)$ y un entero $k$, el problema pregunta si existe un subconjunto $D \subseteq V$ de tamaño a lo sumo $k$ tal que cada vértice $v \in V$ es miembro de $D$ o es adyacente a al menos un vértice en $D$.
 
 - **Vertex Cover (Cobertura de Vértices):**
-  Dado un grafo no dirigido $G = (V, E)$ y un entero $k$, el problema pregunta si existe un subconjunto $C \subseteq V$ de tamaño a lo sumo $k$ tal que cada arista $(u, v) \in E$ tiene al menos uno de sus extremos en $C$.
+  Dado un grafo no dirigido $G = (V, E)$ y un entero $k$, el problema pregunta si existe un subconjunto $C \subseteq V$ de tamaño a lo sumo $k$ tal que cada arista $(u, v) \in E$ tiene al menos uno de sus extremos en $C$. -->
 
 ---
 
@@ -183,8 +180,4 @@ Supongamos un grafo simple $G$ con tres vértices $V = \{a, b, c\}$ y aristas $E
   - Si $v \notin D$, entonces su correspondiente $v' \in C$. Para cubrir la arista $(v', u')$ en $G'$, donde $(v, u) \in E$, $u'$ o $v'$ deben estar en $C$. Como $v' \in C$, y $v'$ solo está conectado a $v$ y a los $u'$, esto implica que $u \in D$ para algún vecino $u$ de $v$.
   - Por lo tanto, $v$ está dominado por $u \in D$.
 
----
 
-** en conclusión:**
-
-Hemos demostrado que existe una reducción en tiempo polinomial del problema de _Dominating Set_ al problema de _Vertex Cover_. Esta reducción preserva las soluciones, lo que significa que resolver el problema de _Vertex Cover_ en el grafo $G'$ nos proporciona una solución al problema de _Dominating Set_ en el grafo original $G$.
