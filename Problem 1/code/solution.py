@@ -3,9 +3,8 @@ Complejidad Temporal: O(n^2)
 """
 
 
-def main():
-    n = int(input())
-    c = list(map(int, input().split()))
+def expected_value(c: list[int]) -> list[float]:
+    n = len(c)
 
     # Ordenar los cofres en orden descendente
     c.sort(reverse=True)  # * O(n log n)
@@ -22,11 +21,12 @@ def main():
             j += 1
         expected_gain = total_gain / n
         result.append(expected_gain)
-        print(f"Ganancia esperada para k = {k}: {total_gain}/{n} = {expected_gain}")
+        # print(f"Ganancia esperada para k = {k}: {total_gain}/{n} = {expected_gain}")
 
     # * O(n log n) + O(n) * O(n) = O(n^2) en total
     return result
 
 
 if __name__ == "__main__":
-    main()
+    c = list(map(int, input().split()))
+    result = expected_value(c)
