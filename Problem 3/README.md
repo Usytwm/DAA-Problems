@@ -28,18 +28,18 @@ Si cada vértice se encuentra inicialmente en estado no vigilado, se desea encon
 ## Generalización del problema
 
 Eliminando las particularidades del problema(aldeas, guardianes, etc.) tenemos que:
-Dado un grafo G = (V,E), debemos encontrar el subconjunto de vértices D con la menor cantidad de vértices posible, tal que cada vértice de V pertenece a D o es adyacente a al menos un vértice de D.
+Dado un grafo $G = (V,E)$, debemos encontrar el subconjunto de vértices $D$ con la menor cantidad de vértices posible, tal que cada vértice de $V$ pertenece a $D$ o es adyacente a al menos un vértice de $D$.
 
-Al problema anterior se le denomina problema del conjunto dominante(dominating set problem), un problema NP-completo.
+Al problema anterior se le denomina problema del conjunto dominante(dominating set problem), un problema $NP-completo$.
 
 ## Dominating Set Problem
 
 Formalmente, el conjunto dominante se define como:
 Dado un grafo no dirigido $G = (V,E)$, un subconjunto de vértices $D \subseteq V$ se llama conjunto dominante si para cada vértice $u \in V \setminus D$ hay un vértice $v \in D$ tal que $(u,v) \in E$.
 
-El numero de dominancia de G se define como $Y(G) := \min \{|S| : S \text{ es un conjunto dominante de } G\}$
+El numero de dominancia de $G$ se define como $Y(G) := \min \{|S| : S \text{ es un conjunto dominante de } G\}$
 
-Probar si $Y(G) \leq k$ para un grafo dado y una entrada $k$ es un problema de decisión NP-Completo.
+Probar si $Y(G) \leq k$ para un grafo dado y una entrada $k$ es un problema de decisión $NP-Completo$.
 
 ## Demostrando que es NP-Completo
 
@@ -47,8 +47,8 @@ Probar si $Y(G) \leq k$ para un grafo dado y una entrada $k$ es un problema de d
 
 Un problema de decisión es NP-Completo si:
 
-1. Está en NP.
-2. Todo problema de NP es reductible al problema dado en un tiempo polinómico.
+1. Está en $NP$.
+2. Todo problema de $NP$ es reductible al problema dado en un tiempo polinómico.
 
 ### Procedimiento
 
@@ -76,7 +76,7 @@ Para cada vértice $v \in V \setminus  S$:
 - Verificar si v esta conectado a algún vértice en $S$
 - Si se encuentra alguna conexión faltante, la solución es incorrecta
 
-Esta verificación puede realizarse en tiempo $O(V+E)$ por lo que el problema esta en NP.
+Esta verificación puede realizarse en tiempo $O(V+E)$ por lo que el problema esta en $NP$.
 
 ### Paso 3
 
@@ -85,11 +85,11 @@ Una **cobertura de vértices** $V'$ de un grafo $G = (V, E)$ es un subconjunto d
 ### Pasos 4 y 5
 Dada una instancia del problema de Vertex Cover:
 
-- Teniendo un grafo $G = (V, E)$ y un número entero k, buscar si hay un conjunto de vértices $V_c$ de tamaño k que cubra todas las aristas.
+- Teniendo un grafo $G = (V, E)$ y un número entero $k$, buscar si hay un conjunto de vértices $V_c$ de tamaño $k$ que cubra todas las aristas.
 
 Se construye una nueva instancia del problema de conjunto dominante:
 
-- Sea $G’$ subgrafo de $G$ tal que para cada arista $(u,v)$ en $E$, se agrega un nuevo vértice $w_{uv}$ a $V’$ conectado a ambos vértices u y v.
+- Sea $G’$ subgrafo de $G$ tal que para cada arista $(u,v)$ en $E$, se agrega un nuevo vértice $w_{uv}$ a $V’$ conectado a ambos vértices $u$ y $v$.
 
 Luego se tiene que si $G$ tiene una cobertura de vértices $V_c$ de tamaño $k$:
 El conjunto $V_c$ forma un conjunto dominante en $G’$
@@ -181,3 +181,21 @@ Supongamos un grafo simple $G$ con tres vértices $V = \{a, b, c\}$ y aristas $E
   - Por lo tanto, $v$ está dominado por $u \in D$.
 
 
+
+## Encontrar la solución exacta
+
+Para encontrar la solución exacta del problema del **Conjunto Dominante**, es necesario evaluar todas las combinaciones posibles de subconjuntos de vértices, lo cual puede tener una complejidad exponencial de $O(2^n)$, siendo $ n $ el número de vértices en el grafo. Sin embargo, existen algoritmos que mejoran esta complejidad.
+
+### Algoritmos que reducen la complejidad a $1.5^n$
+
+Se han desarrollado algoritmos que mejoran el tiempo de resolución exacta utilizando técnicas avanzadas de **ramificación y poda**, logrando reducir la complejidad a $O(1.5^n)$. Estos algoritmos son ideales para grafos de tamaño moderado, permitiendo resolver el problema exacto en menos tiempo que los algoritmos ingenuos de fuerza bruta.
+
+## Algoritmos de Aproximación
+
+Dado que encontrar la solución exacta es computacionalmente costoso para grafos grandes, los **algoritmos de aproximación** son una alternativa eficaz. Uno de los más comunes es el **algoritmo greedy**, que selecciona nodos de manera ávida, cubriendo en cada paso la mayor cantidad posible de nodos no cubiertos.
+
+El **algoritmo greedy** no garantiza la solución óptima, pero ofrece una solución cercana en un tiempo razonable. La aproximación que ofrece está relacionada con el logaritmo del **grado máximo** del grafo $\Delta$.
+
+Para obtener más detalles sobre la demostración de que el algoritmo greedy tiene una aproximación de $O(\ln(\Delta))$, pueden consultar el siguiente enlace:
+
+[Demostración de la Aproximación del Algoritmo Greedy](greedy_complejidad.md)
