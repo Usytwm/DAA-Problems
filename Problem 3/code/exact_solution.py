@@ -48,6 +48,6 @@ graph = {
     "G": ["D", "F", "H"],
     "H": ["A", "B", "C", "G"],
 }
-
+# debe retornar o ["H", "F"] o ["A", "F"]
 minimum_dominating_set = find_minimum_dominating_set(graph)
 print(f"Conjunto dominante mínimo: {minimum_dominating_set}")
