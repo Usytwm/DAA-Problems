@@ -148,5 +148,5 @@ def run_test_correctness():
 
 
 if __name__ == "__main__":
-    # run_tests_time()
+    run_tests_time()
     run_test_correctness()
