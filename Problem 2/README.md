@@ -85,7 +85,7 @@ El problema del **Minimum Vertex Cover** es **NP-completo**; pero en grafos bipa
 
 El algoritmo de **Hopcroft-Karp** computa el maximum matching de un grafo bipartito en $O(|E|\sqrt{|V|})$. Notemos que para el grafo que hemos creado se cumple que $|V| = t$ y $|E| = 2t$, por lo que la complejidad de nuestro algoritmo sería $O(t\sqrt{t})$ si usamos Hopcroft-Karp y $O(t^2)$ si usamos Dinic. No obstante, notemos que a su vez $t$ es $O(n^2)$, puesto que una sección pintada de negro puede contener hasta $n^2$ celdas en su interior. Luego, la complejidad de nuestro algoritmo sería $O(n^4)$.
 
-Si en lugar de Hopcroft-Karp, usáramos el más general y sencillo de implementar algoritmo de **Edmonds-Karp**, la complejidad sería mayor, ya que la complejidad de Edmonds-Karp es $O(|V||E|^2)$, lo que aplicado a nuestro problema lo llevaría al orden de $O(n^6)$. Esta complejidad es muy limitante.
+Si en lugar de Hopcroft-Karp, usáramos el más general y sencillo de implementar algoritmo de **Edmonds-Karp**, la complejidad sería mayor, ya que la complejidad de Edmonds-Karp es $O(|V||E|^2)$, lo que aplicado a nuestro problema lo llevaría al orden de $O(n^5)$. Esta complejidad es muy limitante.
 
 
 ## Compresión
