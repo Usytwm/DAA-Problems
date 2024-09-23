@@ -17,6 +17,7 @@ def greedy_dominating_set(graph):
     dominateds = set()  # Nodos dominados
     answer = set()  # Conjunto dominante aproximado
 
+    # Dominar los nodos sin vecinos
     for node in graph:
         if len(graph[node]) == 0:
             answer.add(node)

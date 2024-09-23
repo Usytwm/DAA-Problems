@@ -132,4 +132,5 @@ def plot_results(
     plt.show()
 
 
-compare_solutions(150, 0.4)
+if __name__ == "__main__":
+    compare_solutions(150, 0.4)
