@@ -26,6 +26,8 @@ Este repositorio contiene una colección de problemas y sus soluciones para la a
   - [Solución Aproximada](./Problem%203/code/approximate_solution.py) $O(n^2)$ $ \ln(\Delta) -aproximación$
   <!-- - [Solución Optimizada](./Problem%203/code/optimized_exact_solution.py) -->
 
+- **[Informe](Informe.pdf)**
+
 ## Descripción de los Problemas
 
 1. ## Videojuego:
