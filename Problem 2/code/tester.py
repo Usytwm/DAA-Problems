@@ -13,7 +13,7 @@ def generate_random_test_case(n, m):
         x1 = random.randint(1, n)
         y1 = random.randint(1, n)
         x2 = random.randint(x1, n)
-        y2 = random.randint(y2, n)
+        y2 = random.randint(x2, n)
         sections.append((x1, y1, x2, y2))
     return sections
 
@@ -33,13 +33,13 @@ def speed_test(implementation, n, m):
 
 # Realizar los tests para diferentes tamaños de n y m y guardar los tiempos
 def run_tests():
-    ns = [10, 20, 30, 40, 50]  # Valores de n pequeños para brute_force
+    ns = [10, 12, 13, 14, 15]  # Valores de n pequeños para brute_force
     ns_large = [
-        10**3,
-        10**4,
-        10**5,
-        10**6,
-        10**7,
+        10 * 2,
+        2 * 10**2,
+        3 * 10**2,
+        4 * 10**2,
+        5 * 10**2,
     ]  # Valores de n grandes para las otras implementaciones
     m = 50  # Valor de m significativamente más pequeño que n
 
@@ -51,18 +51,18 @@ def run_tests():
 
     # Test para fuerza bruta
     for n in ns:
-        print(f"Testing brute force for n = {n}, m = {m}")
-        time_taken = speed_test(brute_force_main, n, m)
+        print(f"Testing brute force for n = {n}, m = {n//5}")
+        time_taken = speed_test(brute_force_main, n, n // 5)
         brute_force_times.append(time_taken)
         print(f"Brute force took {time_taken:.2f} seconds.")
 
-        print(f"Testing final solution for n = {n}, m = {m}")
-        time_taken = speed_test(final_solution_main, n, m)
+        print(f"Testing final solution for n = {n}, m = {n//5}")
+        time_taken = speed_test(final_solution_main, n, n // 5)
         final_solution_times_ns.append(time_taken)
         print(f"Final solution took {time_taken:.2f} seconds.")
 
-        print(f"Testing uncompresed solution for n = {n}, m = {m}")
-        time_taken = speed_test(uncompresed_solution_main, n, m)
+        print(f"Testing uncompresed solution for n = {n}, m = {n//5}")
+        time_taken = speed_test(uncompresed_solution_main, n, n // 5)
         uncompresed_solution_times_ns.append(time_taken)
         print(f"Uncompresed solution took {time_taken:.2f} seconds.")
 
