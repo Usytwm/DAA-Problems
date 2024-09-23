@@ -13,7 +13,7 @@ def greedy_dominating_set(graph):
     dominateds = set()
     answer = set()
     while len(dominateds) < len(graph):
-        selected = max([(len(neighbors), i) for i, neighbors in graph])[1]
+        selected = max([(len(neighbors), i) for i, neighbors in enumerate(graph)])[1]
         dominate(selected, graph, dominateds)
         answer.add(selected)
     return answer
