@@ -38,16 +38,18 @@ def find_minimum_dominating_set(graph):
     return nodes  # En el peor caso, retornar todos los nodos (caso donde todo el grafo es el conjunto dominante)
 
 
-graph = {
-    "A": ["B", "H"],
-    "B": ["A", "C", "H"],
-    "C": ["B", "D", "E", "F", "H"],
-    "D": ["C", "F", "G"],
-    "E": ["C", "F"],
-    "F": ["C", "D", "E", "G"],
-    "G": ["D", "F", "H"],
-    "H": ["A", "B", "C", "G"],
-}
-# debe retornar o ["H", "F"] o ["A", "F"]
-minimum_dominating_set = find_minimum_dominating_set(graph)
-print(f"Conjunto dominante mínimo: {minimum_dominating_set}")
+if __name__ == "__main__":
+    # Ejemplo
+    graph = {
+        "A": ["B", "H"],
+        "B": ["A", "C", "H"],
+        "C": ["B", "D", "E", "F", "H"],
+        "D": ["C", "F", "G"],
+        "E": ["C", "F"],
+        "F": ["C", "D", "E", "G"],
+        "G": ["D", "F", "H"],
+        "H": ["A", "B", "C", "G"],
+    }
+    # debe retornar o ["H", "F"] o ["A", "F"]
+    minimum_dominating_set = find_minimum_dominating_set(graph)
+    print(f"Conjunto dominante mínimo: {minimum_dominating_set}")

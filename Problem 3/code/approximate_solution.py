@@ -1,35 +1,3 @@
-import heapq
-import random
-
-
-# def greedy_dominating_set(graph):
-#     """
-#     Implementa el algoritmo greedy para encontrar un conjunto dominante aproximado en un grafo.
-#     ---
-#     :param graph: Un diccionario que representa el grafo, donde las llaves son los nodos y los valores son listas de vecinos.
-#     :return: Un conjunto dominante aproximado.
-#     """
-#     dominated = set()  # Conjunto de vértices ya dominados
-#     dominating_set = set()  # Conjunto que contiene la solución aproximada
-
-#     heap = [(-len(neighbors), vertex) for vertex, neighbors in graph.items()]
-#     # Convertir la lista en un heap en O(n)
-#     heapq.heapify(heap)
-
-#     while len(dominated) < len(graph):
-#         # Sacar el vértice que domina más nodos no dominados
-#         _, best_vertex = heapq.heappop(heap)
-#         if best_vertex not in dominated:
-#             # Añadir el vértice al conjunto dominante
-#             dominating_set.add(best_vertex)
-#             # Marcar como dominados el vértice y sus vecinos
-#             dominated.add(best_vertex)
-#             for neighbor in graph[best_vertex]:
-#                 dominated.add(neighbor)
-
-#     return dominating_set
-
-
 def greedy_dominating_set(graph):
     """
     Implementa el algoritmo greedy ajustado para encontrar un conjunto dominante aproximado en un grafo,
