@@ -199,3 +199,17 @@ El **algoritmo greedy** no garantiza la solución óptima, pero ofrece una soluc
 Para obtener más detalles sobre la demostración de que el algoritmo greedy tiene una aproximación de $O(\ln(\Delta))$, pueden consultar el siguiente enlace:
 
 [Demostración de la Aproximación del Algoritmo Greedy](greedy_complejidad.md)
+
+## Resultados de los Tests
+
+A continuación se muestran los gráficos obtenidos tras la ejecución de los tests que comparan las soluciones exactas y aproximadas, así como el análisis del logaritmo del grado máximo.
+
+### Comparación de Soluciones Exactas y Aproximadas
+
+![Comparación de Soluciones Exactas y Aproximadas](Figure_1.png)
+
+### Logaritmo del Grado Máximo y Solucion Aproximadas
+
+![Logaritmo del Grado Máximo y Diferencia entre Soluciones](Figure_2.png)
+
+Los gráficos muestran claramente las diferencias entre las soluciones obtenidas de manera exacta y las soluciones aproximadas mediante el algoritmo greedy. El análisis del logaritmo del grado máximo también proporciona información sobre la calidad de las aproximaciones obtenidas.
