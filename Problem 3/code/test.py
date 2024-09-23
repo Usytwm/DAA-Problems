@@ -124,41 +124,7 @@ def plot_results(
     plt.show()
 
 
-# Ejecución de la comparación
-num_grafos = 200  # Número de grafos a generar
-probabilidad_conexion = 0.4  # Probabilidad de conexión entre nodos
-
-
-compare_solutions(num_grafos, probabilidad_conexion)
-# def test_performance():
-#     for g in range(num_grafos):
-#         graph = generate_random_graph(num_nodos=random.randint(1, MAX_GRAPH_SIZE))
-
-#         start_time = time.time()
-#         optimized_greedy = greedy_dominating_set_o(graph)
-#         end_time = time.time()
-#         optimized_time = end_time - start_time
-#         # print(f"Optimized version took {optimized_time:.2f} seconds.")
-#         optimized_greedy_len = len(optimized_greedy)
-
-#         start_time = time.time()
-#         greedy = greedy_dominating_set(graph)
-#         end_time = time.time()
-#         time_taken = end_time - start_time
-#         # print(f"version took {time_taken:.2f} seconds.")
-#         greedy_len = len(greedy)
-
-#         if optimized_greedy_len != greedy_len:
-#             raise Exception(
-#                 f"Test failed for graph {g + 1}. Optimized Greedy: {optimized_greedy}, Greedy: {greedy}"
-#             )
-#         if optimized_time > time_taken:
-#             print(
-#                 f"Optimized version is slower than the normal version in case {g + 1}"
-#             )
-
-
-# # test_performance()
+compare_solutions(200, 0.4)
 
 # # graph = {
 # #     0: [1, 7],  # A -> B, H
