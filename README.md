@@ -1,4 +1,4 @@
-# DAA Problems
+# Diseño y Análisis de Algoritmos
 
 Este repositorio contiene una colección de problemas y sus soluciones para la asignatura de **Diseño y Análisis de Algoritmos** de la carrera Ciencias de la Computacion. Cada problema incluye una descripción detallada, una demostración de la solución en formato PDF y el código fuente correspondiente.
 
