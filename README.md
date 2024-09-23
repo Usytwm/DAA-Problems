@@ -8,8 +8,8 @@ Este repositorio contiene una colección de problemas y sus soluciones para la a
 
   - [Instrucciones y Descripción del Problema](./Problem%201/README.md)
   - [Informe de la Solución (PDF)](./Problem%201/Videojuego.pdf)
-  - [Solución](./Problem%201/code/solution2.py) $O(n^2)$
-  - [Solución Optimizada](./Problem%201/code/solution1.py) $O(n \log n)$
+  - [Solución](./Problem%201/code/solution.py) $O(n^2)$
+  - [Solución Optimizada](./Problem%201/code/optimized_solution.py) $O(n \log n)$
 
 - **Problema 2 (Grid)/**
 
@@ -21,7 +21,7 @@ Este repositorio contiene una colección de problemas y sus soluciones para la a
 
 - **Problema 3 (El secreto de la Isla)/**
   - [Instrucciones y Descripción del Problema](./Problem%203/README.md)
-  - [Informe de la Solución (PDF)](./Problem%203/)
+  - [Informe de la Solución (PDF)](./Problem%203/El%20secreto%20de%20la%20Isla.pdf)
   - [Solución](./Problem%203/code/exact_solution.py) $O(2^{n} \cdot n^2)$
   - [Solución Aproximada](./Problem%203/code/approximate_solution.py) $O(n^2)$ $ \ln(\Delta) -aproximación$
   <!-- - [Solución Optimizada](./Problem%203/code/optimized_exact_solution.py) -->
