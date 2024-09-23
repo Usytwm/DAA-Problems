@@ -10,25 +10,10 @@ Los jóvenes líderes deben resolver este desafío para mostrar su valía. Con c
 
 # Solución del Problema
 
-## Definición del problema
-
-El problema se representa mediante un grafo $G = (V,E)$ donde:
-
-- V = {conjunto de aldeas}.
-- E = {conexiones entre las aldeas}.
-
-Cada vértice $u \in V$ se puede clasificar en función de si está siendo vigilado o no por un guardián.
-Si cada vértice se encuentra inicialmente en estado no vigilado, se desea encontrar un subconjunto $D \subseteq V$ de k vértices tal que:
-
-- Cada vértice del subconjunto pasa a estado vigilado.
-- Cada vértice adyacente a un vértice del subconjunto - pasa a estado vigilado.
-- Tras los pasos 1 y 2, no quedan vértices no vigilados en el grafo.
-- k sea mínimo
-
 ## Generalización del problema
 
 Eliminando las particularidades del problema(aldeas, guardianes, etc.) tenemos que:
-Dado un grafo $G = (V,E)$, debemos encontrar el subconjunto de vértices $D$ con la menor cantidad de vértices posible, tal que cada vértice de $V$ pertenece a $D$ o es adyacente a al menos un vértice de $D$.
+Dado un grafo $G = (V,E)$, debemos encontrar el subconjunto de vértices $D$ mas pequenho, tal que cada vértice de $V$ pertenece a $D$ o es adyacente a al menos un vértice de $D$.
 
 Al problema anterior se le denomina problema del conjunto dominante(dominating set problem), un problema $NP-completo$.
 
@@ -39,148 +24,28 @@ Dado un grafo no dirigido $G = (V,E)$, un subconjunto de vértices $D \subseteq 
 
 El numero de dominancia de $G$ se define como $Y(G) := \min \{|S| : S \text{ es un conjunto dominante de } G\}$
 
-Probar si $Y(G) \leq k$ para un grafo dado y una entrada $k$ es un problema de decisión $NP-Completo$.
+El dominating set en un grafo con vertices aislados, los incluye por fuerza. Luego el problema de computar el dominating set de un grafo con vertices aislados puede ser resuelto computando el dominating set del mismo grafo sin los nodos aislados y luego incorporando estos al resultdo.
+Por tanto pasemos a demostrar que computar el dominating set de un nodo sin vertices aislados es NP-Hard.
+Para ello, parece natural realizar una reduccion desde Vertex Cover hasta Dominating Set, puesto que cada cubrimiento de un grafo sin nodos aislados es un dominating set de este; aunque no necesariamente el Minimum Dominating Set.
 
 ## Demostrando que es NP-Completo
 
-### Definición
+Mostremos que el problema de decision de decidir si existe un dominating set de tamanho k en un grafo, es un problema NP-Completo.
 
-Un problema de decisión es NP-Completo si:
+El problema pertence a NP, ya que una solucion candidata puede ser verificada en tiempo polinomial, con tan solo computar el conjunto de vertices dominados y verificar que su tamanho sea igual al numero total de vertices del grafo.
 
-1. Está en $NP$.
-2. Todo problema de $NP$ es reductible al problema dado en un tiempo polinómico.
+Ahora encontremos una reduccion en tiempo polinomial desde el problema del Vertex Cover al problema del Dominating Set. Esto nos permitira afirmar que Dominating Set es NP-Hard, con lo cual completariamos la demostracion de que es NP-Completo
 
-### Procedimiento
+Para un grafo G(V, E), definamos el grafo G', como el resultante de mantener todos los vertices y aristas de G y anhadir un vertice w por cada arista <u, v>. Tal vertice w tendra solamente aristas a los vertices u y v.
+Sea D un dominating set de tamanho k de G'.
+Si $D \subset V$ entonces, D es un vertex cover de G, puesto que para cualquier nodo de $V$ que no este en D, este se encontrara a distancia 1, de un nodo en D, o sea, para toda arista al menos uno de sus extremos esta en D.
+Si $D \nsubseteq V$, es posible obtener un dominating set D' de tamanho k en G', que si cumpla
+$D \subset V$, tan solo con sustituir todo vertice w no perteneciente a V, con uno de los dos vertices a los que esta conectado. Sea $u tal vertice. $u estara conectado a todos los nodos a los que lo estaba $w, ya que $w solo estaba conectado a $u y a un nodov tal que existe una arista entre u y v, por lo cual u tambien esta conectado a el. Este conjunto D', si sera vertex cover de G.
 
-La condición uno se prueba demostrando que una condición candidata para el problema se puede verificar en tiempo polinómico.
+Por otro lado, sea C un vertex cover de tamanho k del grafo G. Entonces todo vertice de G se encuentra a una distancia de a lo mas 1 de un vertice del vertex cover, ya que para cada arista al menos uno de sus extremos esta incluido en el vertex cover y en este grafo no hay nodos aislados. Ademas, como para cada vertice w que no esta en G pero si en G' se cumple que tiene una arista hacia los dos nodos de una arista, y al menos uno de los nodos de la arista esta en C, entonces w se encuentra a una distancia 1 de al menos un nodo en C.
 
-La condición dos se puede probar reduciendo al problema dado algún problema NP-Completo conocido, la reducción debe ser en tiempo polinómico.
-
-### Idea general de la demostración
-
-1. Demostramos que una solución candidata del problema puede verificarse en tiempo polinómico.
-2. Luego el problema está en NP y se cumple la condición uno.
-3. Presentamos el problema de cobertura de vértices(Vertex Cover Problem), uno de los 21 problemas NP-completos de Karp.
-4. Demostramos que existe una reducción en tiempo polinómico del problema del mínimo conjunto dominante al problema de cobertura de conjuntos.
-5. Por tanto se cumple la condición dos.
-
-Luego el problema es NP-Completo
-
-### Pasos 1 y 2
-
-Sea el problema de si un grafo $G = (V,E)$ tiene un conjunto dominante $S: |S| = k$. Podemos verificar una solución potencial en tiempo polinómico.
-
-Verificar si el conjunto de vértices $S$ forma un conjunto dominante:
-Para cada vértice $v \in V \setminus  S$:
-
-- Verificar si v esta conectado a algún vértice en $S$
-- Si se encuentra alguna conexión faltante, la solución es incorrecta
-
-Esta verificación puede realizarse en tiempo $O(V+E)$ por lo que el problema esta en $NP$.
-
-### Paso 3
-
-Una **cobertura de vértices** $V'$ de un grafo $G = (V, E)$ es un subconjunto de $V$ tal que, si $(u, v) \in E$, entonces $u \in V'$ o $v \in V'$. Es decir, es un subconjunto de vértices $V'$ donde cada arista de $E$ tiene al menos uno de sus extremos en él.
-
-### Pasos 4 y 5
-Dada una instancia del problema de Vertex Cover:
-
-- Teniendo un grafo $G = (V, E)$ y un número entero $k$, buscar si hay un conjunto de vértices $V_c$ de tamaño $k$ que cubra todas las aristas.
-
-Se construye una nueva instancia del problema de conjunto dominante:
-
-- Sea $G’$ subgrafo de $G$ tal que para cada arista $(u,v)$ en $E$, se agrega un nuevo vértice $w_{uv}$ a $V’$ conectado a ambos vértices $u$ y $v$.
-
-Luego se tiene que si $G$ tiene una cobertura de vértices $V_c$ de tamaño $k$:
-El conjunto $V_c$ forma un conjunto dominante en $G’$
-Cada vértice $w_{uv}$ es dominado por al menos uno de sus dos vértices incidentes en $V_c$
-Por lo tanto, $G’$ tiene un conjunto dominante de tamaño $k$.
-
-Si $G’$ tiene un conjunto dominante $D$ de tamaño $k$:
-Los vértices originales de $G$ forman una cobertura de vértices en $G$.
-Cada arista (u,v) debe tener al menos un vértice $D$ conectado a $u$ o $v$
-Por lo tanto, $D$ forma una cobertura de vértices en $G$ de tamaño máximo $k$
-
-Por tanto, podemos reducir un problema de cobertura de vértices a uno de conjunto dominante.
-
-Como Vertex Cover es un problema $NP-Completo$, todo problema $NP$ se puede reducir a un problema Vertex Cover, luego todo problema NP se puede reducir a un problema Dominating Set.
-
-### Otra solucion
-### Reducción del problema de **Dominating Set** al problema de **Vertex Cover**
-
-**Introducción:**
-
-El objetivo es demostrar una reducción polinomial del problema de _Dominating Set_ al problema de _Vertex Cover_. Esto significa que, dada una instancia de _Dominating Set_, podemos transformarla en una instancia de _Vertex Cover_ de tal manera que la solución al segundo problema nos proporcione una solución al primero.
-
-
-<!-- **Definiciones:**
-
-- **Dominating Set (Conjunto Dominante):**
-  Dado un grafo no dirigido $G = (V, E)$ y un entero $k$, el problema pregunta si existe un subconjunto $D \subseteq V$ de tamaño a lo sumo $k$ tal que cada vértice $v \in V$ es miembro de $D$ o es adyacente a al menos un vértice en $D$.
-
-- **Vertex Cover (Cobertura de Vértices):**
-  Dado un grafo no dirigido $G = (V, E)$ y un entero $k$, el problema pregunta si existe un subconjunto $C \subseteq V$ de tamaño a lo sumo $k$ tal que cada arista $(u, v) \in E$ tiene al menos uno de sus extremos en $C$. -->
-
----
-
-**Construcción de la Reducción:**
-
-Dada una instancia del problema de _Dominating Set_, es decir, un grafo $G = (V, E)$ y un entero $k$, construiremos una instancia del problema de _Vertex Cover_, es decir, un grafo $G' = (V', E')$ y un entero $k'$, siguiendo los pasos:
-
-1. **Creación de vértices en $G'$:**
-
-   - Para cada vértice $v \in V$, agregamos dos vértices en $V'$: uno llamado $v$ y otro llamado $v'$.
-
-2. **Creación de aristas en $G'$:**
-
-   - Para cada arista $(u, v) \in E$:
-     - Agregamos aristas $(u, v)$ y $(u', v')$ en $E'$.
-   - Para cada vértice $v \in V$:
-     - Agregamos una arista $(v, v')$ en $E'$.
-
-3. **Definición de $k'$:**
-   - Establecemos $k' = k + |V|$.
-
----
-
-**Ejemplo de Construcción:**
-
-Supongamos un grafo simple $G$ con tres vértices $V = \{a, b, c\}$ y aristas $E = \{(a, b), (b, c)\}$. Construimos $G'$ de la siguiente manera:
-
-- **Vértices de $G'$:** $V' = \{a, b, c, a', b', c'\}$.
-- **Aristas de $G'$:**
-  - $(a, b), (a', b')$ (de $E$).
-  - $(b, c), (b', c')$ (de $E$).
-  - $(a, a'), (b, b'), (c, c')$ (conexiones entre cada vértice y su copia).
-
----
-
-**Demostración de Correctitud:**
-
-**(⇒) Si existe un Conjunto Dominante de tamaño $k$ en $G$, entonces existe una Cobertura de Vértices de tamaño $k'$ en $G'$.**
-
-- Sea $D \subseteq V$ un conjunto dominante en $G$ de tamaño $k$.
-- Construimos $C = D \cup \{v' \mid v \in V\}$.
-- Entonces, $C \subseteq V'$ y su tamaño es $k' = k + |V|$.
-- **Cobertura de aristas:**
-  - Las aristas $(v, v')$ están cubiertas porque $v' \in C$.
-  - Las aristas originales $(u, v)$ están cubiertas porque al menos uno de $u$ o $v$ está en $D \subseteq C$ (debido a que $D$ es dominante).
-  - Las aristas $(u', v')$ están cubiertas porque $u', v' \in C$.
-
-**(⇐) Si existe una Cobertura de Vértices de tamaño $k'$ en $G'$, entonces existe un Conjunto Dominante de tamaño $k$ en $G$.**
-
-- Sea $C \subseteq V'$ una cobertura de vértices en $G'$ de tamaño $k'$.
-- Observamos que para cubrir las aristas $(v, v')$, al menos uno de $v$ o $v'$ debe estar en $C$.
-- Como hay $|V|$ pares $(v, v')$, y $k' = k + |V|$, al menos $|V|$ vértices de la forma $v$ o $v'$ están en $C$.
-- Sin pérdida de generalidad, asumimos que todos los $v'$ están en $C$ (si no, podemos intercambiarlos con sus respectivos $v$ sin aumentar el tamaño de $C$).
-- Los $k$ vértices restantes en $C$ deben provenir de $V$.
-- Sea $D = C \cap V$.
-- **Dominancia en $G$:**
-  - Para cada $v \in V$, si $v \in D$, entonces está dominado.
-  - Si $v \notin D$, entonces su correspondiente $v' \in C$. Para cubrir la arista $(v', u')$ en $G'$, donde $(v, u) \in E$, $u'$ o $v'$ deben estar en $C$. Como $v' \in C$, y $v'$ solo está conectado a $v$ y a los $u'$, esto implica que $u \in D$ para algún vecino $u$ de $v$.
-  - Por lo tanto, $v$ está dominado por $u \in D$.
-
-
+El algoritmo de conversion, es meramente, anhadir un vertice y dos aristas por cada arista original, lo cual es polinomico.
+Luego como decidir si existe un Vertex Cover de tamanho k en un grafo G es equivalente a aplicar la conversion planteada, obteniendo el grafo G', y decidir si existe un Dominating Set de tamanho k en G'; entonces el problema de Dominating Set es NP Completo
 
 ## Encontrar la solución exacta
 

@@ -25,13 +25,7 @@ def greedy_dominating_set(graph):
 
     while len(dominateds) < len(graph):
         # Seleccionar el nodo con más vecinos no dominados
-        selected = max(
-            [
-                (len(neighbors), node)
-                for node, neighbors in graph.items()
-                # if node not in dominateds
-            ]
-        )[1]
+        selected = max([(len(neighbors), node) for node, neighbors in graph.items()])[1]
 
         # Dominar el nodo seleccionado y actualizar el grafo
         dominate(selected, graph, dominateds)
