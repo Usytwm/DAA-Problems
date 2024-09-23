@@ -72,6 +72,57 @@ def compare_solutions(num_grafos, probabilidad_conexion=0.5):
     )
 
 
+# # Función para graficar los resultados
+# def plot_results(
+#     num_grafos, exact_solution_sizes, approximate_solution_sizes, max_degrees
+# ):
+#     x = list(range(1, num_grafos + 1))  # Eje X: número de grafo
+
+#     # Primer gráfico: Comparación de las soluciones exactas y aproximadas
+#     plt.figure(figsize=(10, 6))
+#     plt.plot(x, exact_solution_sizes, label="Solución Exacta", color="blue")
+#     plt.plot(
+#         x,
+#         approximate_solution_sizes,
+#         label="Solución Aproximada",
+#         color="green",
+#     )
+
+#     plt.title("Comparación de soluciones exactas y aproximadas")
+#     plt.xlabel("Número de grafo")
+#     plt.ylabel("Tamaño del conjunto dominante")
+#     plt.legend()
+#     plt.grid(True)
+#     plt.show()
+
+#     # Segundo gráfico: Comparación del logaritmo del grado máximo y la diferencia entre aproximada y exacta
+#     aprox = [approx for approx in approximate_solution_sizes]
+
+#     # Calcular el logaritmo de los grados máximos
+#     log_max_degrees = [
+#         math.ceil(math.log(degree + 2)) * exact_solution_sizes[index]
+#         for index, degree in enumerate(max_degrees)
+#     ]
+
+#     # Gráfico de logaritmo del grado máximo y diferencias entre aproximada y exacta
+#     plt.figure(figsize=(10, 6))
+#     plt.plot(
+#         x,
+#         log_max_degrees,
+#         label="Log(Grado Máximo) * Solucion Exacta",
+#         color="orange",
+#     )
+#     plt.plot(x, aprox, label=" Solucion Aproximada", color="red")
+
+
+#     plt.title(
+#         "Logaritmo del Grado Máximo y diferencia entre soluciones aproximadas y exactas"
+#     )
+#     plt.xlabel("Número de grafo")
+#     plt.ylabel("Valor")
+#     plt.legend()
+#     plt.grid(True)
+#     plt.show()
 # Función para graficar los resultados
 def plot_results(
     num_grafos, exact_solution_sizes, approximate_solution_sizes, max_degrees
@@ -87,6 +138,10 @@ def plot_results(
         label="Solución Aproximada",
         color="green",
     )
+
+    # Calcular el valor máximo entre las soluciones exactas y aproximadas
+    max_value = max(max(exact_solution_sizes), max(approximate_solution_sizes))
+    plt.ylim(0, max_value * 1.5)  # Expandir un 20% por encima del máximo
 
     plt.title("Comparación de soluciones exactas y aproximadas")
     plt.xlabel("Número de grafo")
@@ -114,6 +169,10 @@ def plot_results(
     )
     plt.plot(x, aprox, label=" Solucion Aproximada", color="red")
 
+    # Calcular el valor máximo entre logaritmo de grados y solución aproximada
+    max_value_log = max(max(log_max_degrees), max(aprox))
+    plt.ylim(0, max_value_log * 1.5)  # Expandir un 20% por encima del máximo
+
     plt.title(
         "Logaritmo del Grado Máximo y diferencia entre soluciones aproximadas y exactas"
     )
@@ -124,7 +183,7 @@ def plot_results(
     plt.show()
 
 
-compare_solutions(200, 0.4)
+compare_solutions(150, 0.4)
 
 # # graph = {
 # #     0: [1, 7],  # A -> B, H
