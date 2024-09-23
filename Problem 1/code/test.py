@@ -1,10 +1,7 @@
-from pathlib import Path
 import random
-import sys
+import matplotlib.pyplot as plt
 import time
 
-# path_to_root = Path(__file__).resolve().parents[0]
-# sys.path.append(str(path_to_root))
 
 from optimized_solution import expected_value_optimized
 from solution import expected_value
@@ -38,5 +35,80 @@ def test_performance():
         print("Results are identical between both versions.\n")
 
 
+def test_performance_and_collect_results(
+    num_tests=10000, initial_size=100, max_size=10**5
+):
+    print(
+        f"Iniciando {num_tests} tests con tamaños de entrada aumentando de {initial_size} hasta {max_size}..."
+    )
+    times_optimized = []
+    times_normal = []
+    input_sizes = []  # Guardar el tamaño de entrada de cada test
+
+    # Determinar el incremento del tamaño en cada iteración
+    size_increment = (max_size - initial_size) // num_tests
+
+    for i in range(num_tests):
+        print(f"Test {i + 1} de {num_tests}...")
+        # Calcular el tamaño de entrada para esta iteración
+        input_size = initial_size + i * size_increment
+        input_sizes.append(input_size)  # Guardar el tamaño de entrada
+
+        # Generar caso de prueba aleatorio para este tamaño de entrada
+        test_case = [random.randint(1, 10**6) for _ in range(input_size)]
+
+        # Medir tiempo para la versión optimizada
+        start_time = time.time()
+        expected_value_optimized(test_case.copy())
+        end_time = time.time()
+        times_optimized.append(end_time - start_time)
+
+        # Medir tiempo para la versión normal
+        start_time = time.time()
+        expected_value(test_case.copy())
+        end_time = time.time()
+        times_normal.append(end_time - start_time)
+
+        # Mostrar progreso cada 1000 iteraciones
+        if (i + 1) % 1000 == 0:
+            print(f"{i + 1} tests completados con tamaño de entrada {input_size}...")
+
+    print("\n--- Resultados finales ---")
+    print(f"Tiempo total versión optimizada: {sum(times_optimized):.2f} segundos.")
+    print(f"Tiempo total versión normal: {sum(times_normal):.2f} segundos.")
+    print(
+        f"Tiempo promedio versión optimizada: {sum(times_optimized)/num_tests:.4f} segundos."
+    )
+    print(
+        f"Tiempo promedio versión normal: {sum(times_normal)/num_tests:.4f} segundos."
+    )
+
+    # Graficar los resultados de los tiempos
+    plt.figure(figsize=(10, 6))
+    plt.plot(
+        input_sizes,
+        times_optimized,
+        label="Optimized",
+        color="blue",
+        markersize=2,
+    )
+    plt.plot(input_sizes, times_normal, label="Normal", color="red", markersize=2)
+    plt.xlabel("Tamaño de entrada")
+    plt.ylabel("Tiempo de ejecución (segundos)")
+    plt.title("Comparación de tiempos de ejecución: Optimizado vs Normal")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+    return input_sizes, times_optimized, times_normal
+
+
 if __name__ == "__main__":
-    test_performance()
+    # test_performance()
+    num_tests = 250  # Número de tests a ejecutar
+    initial_size = 100  # Tamaño inicial de la entrada
+    max_size = 10**5  # Tamaño máximo de la entrada
+
+    input_sizes, times_optimized, times_normal = test_performance_and_collect_results(
+        num_tests, initial_size, max_size
+    )
