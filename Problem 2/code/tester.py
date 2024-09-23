@@ -18,9 +18,15 @@ def generate_random_test_case(n, m):
     return sections
 
 
-def correctness_test(implementation, n, m):
+def correctness_test(implementation, n, m, other_implementation=None):
     sections = generate_random_test_case(n, m)
-    return implementation(sections) == brute_force_main(sections)
+    flow_value = implementation(sections)
+    flow_value_brute = (
+        brute_force_main(sections)
+        if other_implementation is None
+        else other_implementation(sections)
+    )
+    return flow_value == flow_value_brute
 
 
 def speed_test(implementation, n, m):
@@ -32,7 +38,7 @@ def speed_test(implementation, n, m):
 
 
 # Realizar los tests para diferentes tamaños de n y m y guardar los tiempos
-def run_tests():
+def run_tests_time():
     ns = [10, 12, 13, 14, 15]  # Valores de n pequeños para brute_force
     ns_large = [
         10 * 2,
@@ -127,5 +133,20 @@ def run_tests():
     plt.show()
 
 
+def run_test_correctness():
+    for n in range(1, 100):
+        m = round(n * 0.1)  # Calcular m como el 10% de n, redondeado
+        try:
+            assert correctness_test(
+                final_solution_main, n, m, uncompresed_solution_main
+            ), f"Test failed for final_solution_main and uncompresed_solution_main with n={n}, m={m}"
+        except AssertionError as e:
+            print(e)
+            print(f"Test failed for n = {n}, m = {m}")
+
+    print("All tests passed (until failure)!")
+
+
 if __name__ == "__main__":
-    run_tests()
+    # run_tests_time()
+    run_test_correctness()
