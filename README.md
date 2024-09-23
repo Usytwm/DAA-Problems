@@ -16,13 +16,13 @@ Este repositorio contiene una colección de problemas y sus soluciones para la a
   - [Instrucciones y Descripción del Problema](./Problem%202/README.md)
   - [Informe de la Solución (PDF)](./Problem%202/Grid.pdf)
   - [Solución por Fuerza Bruta](./Problem%202/code/brute_force.py) $O(2^{2n} \cdot n)$
-  - [Solución Optimizada](./Problem%202/code/uncompressed_solution.py) $O(n^5)$
+  - [Solución Optimizada sin Comprimir](./Problem%202/code/uncompressed_solution.py) $O(n^5)$
   - [Solución Optimizada Comprimida](./Problem%202/code/final_solution.py) $O(m^5)$
 
 - **Problema 3 (El secreto de la Isla)/**
   - [Instrucciones y Descripción del Problema](./Problem%203/README.md)
   - [Informe de la Solución (PDF)](./Problem%203/)
-  - [Solución](./Problem%203/code/exact_solution.py) $O(2^{2n} \cdot n)$
+  - [Solución](./Problem%203/code/exact_solution.py) $O(2^{n} \cdot n^2)$
   - [Solución Aproximada](./Problem%203/code/approximate_solution.py) $O(n^2)$ $ \ln(\Delta) -aproximación$
   <!-- - [Solución Optimizada](./Problem%203/code/optimized_exact_solution.py) -->
 

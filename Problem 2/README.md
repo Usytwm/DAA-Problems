@@ -20,8 +20,6 @@ también?
 
 Dada una matriz de $n \times n$ con $k$ secciones rectangulares pintadas de negro y la posibilidad de pintar de blanco secciones rectangulares de cualquier dimensión $(h \times w)$ con un costo $\min(h, w)$, ¿cuál es el menor costo necesario para que todas las celdas queden pintadas de blanco de nuevo?
 
-## Caso Sencillo del Problema
-
 Primero resolvamos una instancia más sencilla del problema, donde inicialmente no hay $k$ secciones enteras pintadas de negro, sino $t$ celdas individuales pintadas de negro.
 
 
