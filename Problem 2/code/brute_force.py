@@ -60,14 +60,11 @@ def fullfills(tpl, points, points_by_row, points_by_column, n_rows):
     return False
 
 
-def main():
-    _, _, sections = read_data()
+def main(sections=None):
+    if sections is None:
+        _, _, sections = read_data()
     points, n_rows, n_columns = extract_data(sections)
     points_by_row, points_by_column = split(points)
     for tpl in powerset([i for i in range(n_rows + n_columns)]):
         if fullfills(tpl, points, points_by_row, points_by_column, n_rows):
-            print(len(tpl))
-            return
-
-
-main()
+            return len(tpl)

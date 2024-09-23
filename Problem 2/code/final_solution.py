@@ -124,11 +124,9 @@ def Edmonds_Karp(graph):
     return max_flow
 
 
-def main():
-    _, _, sections = read_data()
+def main(sections=None):
+    if sections is None:
+        _, _, sections = read_data()
     sections, row_widths, column_widths = compress_data(sections)
     graph = build_graph(sections, row_widths, column_widths)
-    print(Edmonds_Karp(graph))
-
-
-main()
+    return Edmonds_Karp(graph)

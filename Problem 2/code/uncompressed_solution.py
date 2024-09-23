@@ -90,11 +90,12 @@ def Edmonds_Karp(graph):
     return max_flow
 
 
-def main():
-    _, _, sections = read_data()
+def main(sections=None):
+    if sections is None:
+        _, _, sections = read_data()
     points, rows, columns = extract_data(sections)
     graph = build_graph(points, len(rows), len(columns))
-    print(Edmonds_Karp(graph))
+    return Edmonds_Karp(graph)
 
 
 main()
