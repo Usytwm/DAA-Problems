@@ -36,7 +36,7 @@ def test_performance():
 
 
 def test_performance_and_collect_results(
-    num_tests=10000, initial_size=100, max_size=10**5
+    num_tests, initial_size=100, max_size=2 * 10**4
 ):
     print(
         f"Iniciando {num_tests} tests con tamaños de entrada aumentando de {initial_size} hasta {max_size}..."
@@ -107,8 +107,8 @@ if __name__ == "__main__":
     # test_performance()
     num_tests = 250  # Número de tests a ejecutar
     initial_size = 100  # Tamaño inicial de la entrada
-    max_size = 10**5  # Tamaño máximo de la entrada
 
     input_sizes, times_optimized, times_normal = test_performance_and_collect_results(
-        num_tests, initial_size, max_size
+        num_tests,
+        initial_size,
     )
