@@ -68,3 +68,7 @@ def main(sections=None):
     for tpl in powerset([i for i in range(n_rows + n_columns)]):
         if fullfills(tpl, points, points_by_row, points_by_column, n_rows):
             return len(tpl)
+
+
+if __name__ == "__main__":
+    main()

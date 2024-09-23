@@ -130,3 +130,7 @@ def main(sections=None):
     sections, row_widths, column_widths = compress_data(sections)
     graph = build_graph(sections, row_widths, column_widths)
     return Edmonds_Karp(graph)
+
+
+if __name__ == "__main__":
+    main()

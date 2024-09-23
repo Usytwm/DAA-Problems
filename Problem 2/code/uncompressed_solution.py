@@ -98,4 +98,5 @@ def main(sections=None):
     return Edmonds_Karp(graph)
 
 
-main()
+if __name__ == "__main__":
+    main()
