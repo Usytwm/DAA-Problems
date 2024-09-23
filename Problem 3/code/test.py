@@ -5,6 +5,7 @@ import math
 from approximate_solution import greedy_dominating_set
 from exact_solution import find_minimum_dominating_set
 
+
 MAX_GRAPH_SIZE = 100
 
 
@@ -24,11 +25,13 @@ def compare_solutions(num_grafos, probabilidad_conexion=0.5):
     exact_solution_sizes = []
     approximate_solution_sizes = []
     max_degrees = []
-    num_nodos = random.randint(1, MAX_GRAPH_SIZE)
 
     for _ in range(num_grafos):
         # Generar grafo aleatorio
+        num_nodos = random.randint(1, MAX_GRAPH_SIZE)
         graph = generate_random_graph(num_nodos, probabilidad_conexion)
+
+        print(f"Grafo {_ + 1} de {num_grafos} con {num_nodos}:")
 
         # Calcular la solución exacta y la aproximada
         exact_solution = find_minimum_dominating_set(graph)
@@ -57,7 +60,7 @@ def compare_solutions(num_grafos, probabilidad_conexion=0.5):
             )
 
         # Imprimir información del grafo actual
-        print(f"Grafo {_ + 1}:")
+
         print(f"  - Tamaño de la solución exacta: {solution_size}")
         print(f"  - Tamaño de la solución aproximada: {approx_size}")
         print(f"  - Grado máximo del grafo: {max_degree}")
@@ -125,4 +128,55 @@ def plot_results(
 num_grafos = 200  # Número de grafos a generar
 probabilidad_conexion = 0.4  # Probabilidad de conexión entre nodos
 
+
 compare_solutions(num_grafos, probabilidad_conexion)
+# def test_performance():
+#     for g in range(num_grafos):
+#         graph = generate_random_graph(num_nodos=random.randint(1, MAX_GRAPH_SIZE))
+
+#         start_time = time.time()
+#         optimized_greedy = greedy_dominating_set_o(graph)
+#         end_time = time.time()
+#         optimized_time = end_time - start_time
+#         # print(f"Optimized version took {optimized_time:.2f} seconds.")
+#         optimized_greedy_len = len(optimized_greedy)
+
+#         start_time = time.time()
+#         greedy = greedy_dominating_set(graph)
+#         end_time = time.time()
+#         time_taken = end_time - start_time
+#         # print(f"version took {time_taken:.2f} seconds.")
+#         greedy_len = len(greedy)
+
+#         if optimized_greedy_len != greedy_len:
+#             raise Exception(
+#                 f"Test failed for graph {g + 1}. Optimized Greedy: {optimized_greedy}, Greedy: {greedy}"
+#             )
+#         if optimized_time > time_taken:
+#             print(
+#                 f"Optimized version is slower than the normal version in case {g + 1}"
+#             )
+
+
+# # test_performance()
+
+# # graph = {
+# #     0: [1, 7],  # A -> B, H
+# #     1: [0, 2, 7],  # B -> A, C, H
+# #     2: [1, 3, 4, 5, 7],  # C -> B, D, E, F, H
+# #     3: [2, 5, 6],  # D -> C, F, G
+# #     4: [2, 5],  # E -> C, F
+# #     5: [2, 3, 4, 6],  # F -> C, D, E, G
+# #     6: [3, 5, 7],  # G -> D, F, H
+# #     7: [0, 1, 2, 6],  # H -> A, B, C, G
+# # }
+# graph = {0: [2, 4], 1: [4, 5], 2: [0, 5], 3: [4, 5], 4: [0, 1, 3], 5: [1, 2, 3]}
+# # # graph = {
+# # #     0: [1],
+# # #     1: [0],
+# # # }
+# graph = {0: [], 1: [], 2: [], 3: [], 4: [], 5: []}
+
+
+# greedy = greedy_dominating_set(graph)
+# print(greedy)

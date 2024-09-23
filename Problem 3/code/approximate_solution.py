@@ -1,35 +1,39 @@
+def dominate(selected, graph, dominateds):
+    # Agregar el nodo seleccionado y sus vecinos al conjunto de dominados
+    dominateds.add(selected)
+    for dominated in graph[selected]:
+        dominateds.add(dominated)
+
+    # Actualizar las listas de adyacencia de todos los nodos eliminando los dominados
+    for node in graph:
+        graph[node] = [
+            neighbor for neighbor in graph[node] if neighbor not in dominateds
+        ]
+
+
 def greedy_dominating_set(graph):
-    """
-    Implementa el algoritmo greedy ajustado para encontrar un conjunto dominante aproximado en un grafo,
-    seleccionando el nodo con más vecinos no dominados en cada paso.
-    ---
+    # Convertir cada lista de vecinos en un conjunto para manipulación eficiente
+    graph = {node: set(neighbors) for node, neighbors in graph.items()}
+    dominateds = set()  # Nodos dominados
+    answer = set()  # Conjunto dominante aproximado
 
-    :param graph: Un diccionario que representa el grafo, donde las llaves son los nodos y los valores son listas de vecinos.
-    :return: Un conjunto dominante aproximado.
-    """
-    dominated = set()  # Conjunto de vértices ya dominados
-    dominating_set = set()  # Conjunto que contiene la solución aproximada
+    for node in graph:
+        if len(graph[node]) == 0:
+            answer.add(node)
+            dominateds.add(node)
 
-    while len(dominated) < len(graph):
-        # Buscar el nodo que domina más vecinos no dominados
-        best_vertex = None
-        max_undominated_neighbors = -1
+    while len(dominateds) < len(graph):
+        # Seleccionar el nodo con más vecinos no dominados
+        selected = max(
+            [
+                (len(neighbors), node)
+                for node, neighbors in graph.items()
+                # if node not in dominateds
+            ]
+        )[1]
 
-        for vertex in graph:
-            if vertex not in dominated:
-                # Contar cuántos vecinos no dominados tiene este nodo, incluyéndolo si no está dominado
-                undominated_neighbors = [
-                    neighbor for neighbor in graph[vertex] if neighbor not in dominated
-                ]
-                if len(undominated_neighbors) > max_undominated_neighbors:
-                    max_undominated_neighbors = len(undominated_neighbors)
-                    best_vertex = vertex
+        # Dominar el nodo seleccionado y actualizar el grafo
+        dominate(selected, graph, dominateds)
+        answer.add(selected)
 
-        # Añadir el mejor nodo al conjunto dominante
-        dominating_set.add(best_vertex)
-        # Marcar como dominado el nodo y sus vecinos no dominados
-        dominated.add(best_vertex)
-        for neighbor in graph[best_vertex]:
-            dominated.add(neighbor)
-
-    return dominating_set
+    return answer
