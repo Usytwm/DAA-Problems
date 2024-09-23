@@ -291,7 +291,30 @@ La **complejidad total** del algoritmo se reduce de $O(n^2)$ a $O(n \log n)$ de 
    ![Fórmula](https://latex.codecogs.com/svg.latex?\color{White}O(n%20\log%20n))
 
    
-   
+---
+## Test de Rendimiento y Comparación
+
+### Descripción del Test
+
+Se realizó un test de rendimiento con el objetivo de comparar las salidas y los tiempos de ejecución entre dos versiones de un algoritmo: una versión optimizada y otra no optimizada. El test consistió en ejecutar ambas versiones del algoritmo para diferentes tamaños de entrada, que fueron aumentando progresivamente desde un tamaño inicial de 100 hasta un tamaño máximo de $2 \cdot 10^5$ elementos.
+
+Cada iteración del test generó una lista de números aleatorios entre 1 y $10^6$, y tanto la versión optimizada como la no optimizada procesaron la misma lista. Se midió el tiempo de ejecución de cada versión en cada iteración.
+
+### Objetivo
+
+El objetivo de este test es observar cómo el tiempo de ejecución de ambas versiones del algoritmo se comporta a medida que crece el tamaño de la entrada. Se espera que la versión optimizada tenga un mejor rendimiento, especialmente con tamaños de entrada grandes. Al final del test, se plotearon los tiempos de ejecución para visualizar la diferencia en rendimiento entre las dos versiones.
+
+### Resultados
+
+A continuación se muestra el gráfico que compara los tiempos de ejecución de la versión optimizada y la no optimizada:
+
+![Comparación de tiempos de ejecución (entrada máxima de $10^5$)](Figure_1.png)
+
+Figura 1: Comparación de tiempos de ejecución entre la versión optimizada y la no optimizada para una entrada máxima de $10^5$
+
+![Comparación de tiempos de ejecución (entrada máxima de $2 \cdot 10^5$)](Figure_2.png)
+
+Figura 2: Comparación de tiempos de ejecución entre la versión optimizada y la no optimizada para una entrada máxima de $2 \cdot 10^5$
 
 ---
 
